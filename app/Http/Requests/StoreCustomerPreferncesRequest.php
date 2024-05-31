@@ -27,7 +27,6 @@ class StoreCustomerPreferncesRequest extends FormRequest
             'notification_settings' => [
                 'required',
                 'array',
-                Rule::in(['sms', 'email', 'whatsapp', 'phone']),
             ],
             'language' => 'required|string',
             'currency' => 'required|string|size:3', // Assuming 3-letter currency codes

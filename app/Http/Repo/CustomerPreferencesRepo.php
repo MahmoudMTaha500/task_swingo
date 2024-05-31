@@ -4,8 +4,12 @@ namespace App\Http\Repo;
 use App\Http\Repo\Interface\BaseRepoInterface;
 use App\Models\CustomerPrefernces;
 use App\Http\Resources\customerPrefernces as customerPrefRecourse;
+use App\Traits\ApiResponse;
+use Exception;
+
 class CustomerPreferencesRepo implements BaseRepoInterface
 {
+    use ApiResponse;
     /*
      * @method to create new data into  db
      * @param Array data
@@ -13,7 +17,7 @@ class CustomerPreferencesRepo implements BaseRepoInterface
     public function create(Array $data)
     {
 
-        $data['notification_settings'] = json_encode($data['notification_settings']);
+//        $data['notification_settings'] = json_encode($data['notification_settings']);
 
         $customerPrefernces = CustomerPrefernces::create($data);
         return $customerPrefernces;
@@ -36,9 +40,10 @@ class CustomerPreferencesRepo implements BaseRepoInterface
  * @method to update data from db
  * */
     public function update( $id, array $data){
-        $data['notification_settings'] = json_encode($data['notification_settings']);
+//        $data['notification_settings'] = json_encode($data['notification_settings']);
         $customerPrefernces = CustomerPrefernces::find($id);
-        $customerPrefernces->save($data);
+
+        $customerPrefernces->update($data);
         return $customerPrefernces;
 
     }
@@ -48,7 +53,19 @@ class CustomerPreferencesRepo implements BaseRepoInterface
     public function delete($id){
         $customerPrefernces = CustomerPrefernces::find($id);
 
-       return $customerPrefernces->delete();
+        try {
+            if ($customerPrefernces) {
+                 $customerPrefernces->delete();
+                return $this->response(__('messages.delete_successfully'));
+            } else {
+                return $this->notFoundResponse(__('messages.wrong')); // Or a more appropriate message
+            }
+        } catch (Exception $e) {
+            // Handle other unexpected exceptions (optional)
+            return $this->notFoundResponse(__('messages.unexpected_error'));
+        }
+
+
     }
 
 }

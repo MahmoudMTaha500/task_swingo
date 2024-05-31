@@ -11,6 +11,7 @@ return [
     'updated_successfully' => 'Record Updated successfully.',
     'delete_successfully' => 'Record deleted successfully.',
     'wrong' => 'Something went wrong, Please try again later.',
+    'unexpected_error' => 'Error, Please try again later.',
     ''=>'',
     ''=>'',
     ''=>'',

@@ -28,8 +28,7 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"url": {
@@ -68,39 +67,12 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
-					"mode": "formdata",
-					"formdata": [
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						},
-						{
-							"key": "notification_settings[]",
-							"value": "phone",
-							"type": "text"
-						},
-						{
-							"key": "language",
-							"value": "en",
-							"type": "text"
-						},
-						{
-							"key": "currency",
-							"value": "USD",
-							"type": "text"
-						},
-						{
-							"key": "customer_id",
-							"value": "4",
-							"type": "text"
-						}
-					]
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Add your name in the body\"\n}"
 				},
 				"url": {
 					"raw": "{{weburl}}/customer-preferences",
@@ -137,8 +109,7 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {
@@ -212,8 +183,7 @@
 				"header": [
 					{
 						"key": "Accept",
-						"value": "application/json",
-						"type": "text"
+						"value": "application/json"
 					}
 				],
 				"body": {

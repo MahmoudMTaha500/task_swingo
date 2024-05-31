@@ -18,7 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::group(['middleware'=>'set_default_currency'],function () {
-    Route::resource('customer-preferences',CustomerPreferncesController::class);
+Route::group([ 'prefix'=>'v1/customer','middleware'=>'set_default_currency'],function () {
+
+    Route::get('/{customer_id}/preferences/get',[CustomerPreferncesController::class,'show']);
+    Route::post('/preferences/save',[CustomerPreferncesController::class,'store']);
+    Route::put('/preferences/update/{id}',[CustomerPreferncesController::class,'update']);
+    Route::delete('/preferences/delete/{id}',[CustomerPreferncesController::class,'destroy']);
+
 
 });

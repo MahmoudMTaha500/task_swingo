@@ -23,7 +23,7 @@ class CustomerPreferncesController extends Controller
 
         $dataRequest =    $request->validated();
         $data =   $this->preferences->create($dataRequest);
-       return $this->response(__('created_successfully'),$data);
+       return $this->response(__('messages.created_successfully'),$data);
 
     }
 
@@ -33,7 +33,7 @@ class CustomerPreferncesController extends Controller
     public function show($id)
     {
        $data =  $this->preferences->all($id);
-        return $this->response(__('success'), $data);
+        return $this->response(__('messages.success'), $data);
     }
 
     /**
@@ -43,8 +43,9 @@ class CustomerPreferncesController extends Controller
     {
 
         $data =$request->validated();
+
         $res=$this->preferences->update($id,$data);
-        return $this->response(__('updated_successfully'),$res);
+        return $this->response(__('messages.updated_successfully'),$res);
     }
 
     /**
@@ -52,12 +53,10 @@ class CustomerPreferncesController extends Controller
      */
     public function destroy($id)
     {
-        try{
-            $this->preferences->delete($id);
-            return $this->response(__('delete_successfully'));
-        }catch (Exception $e){
-         return   $this->notFoundResponse(__('wrong'));
-        }
+
+          return  $this->preferences->delete($id);
+
+
 
     }
 }

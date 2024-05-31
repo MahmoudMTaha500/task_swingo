@@ -23,13 +23,14 @@ class UpdateCustomerPreferncesRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
             'customer_id'=> ["required", "integer", "exists:users,id"],
 
             'notification_settings' => [
                 'required',
                 'array',
-                Rule::in(['sms', 'email', 'whatsapp', 'phone']),
+//                Rule::in(['sms', 'email', 'whatsapp', 'phone']),
             ],
             'language' => 'required|string',
             'currency' => 'required|string|size:3', // Assuming 3-letter currency codes
